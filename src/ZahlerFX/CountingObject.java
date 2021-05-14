@@ -1,5 +1,7 @@
 package ZahlerFX;
 
-public enum CountingObject {
-    CAR, BUS, BIRD, LANGESWORT12;
+
+ enum CountingObject {
+    CAR, BUS, BIRD, LANGESWORT12
 }
+

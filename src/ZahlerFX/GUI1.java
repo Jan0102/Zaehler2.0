@@ -24,7 +24,7 @@ public class GUI1 {
 
 
 
-    public GUI1() {
+    public GUI1(Database database) {
         stageTitle();
         layout();
         makeObjectBox();
@@ -91,8 +91,9 @@ public class GUI1 {
         button = new Button("Confirm");
         button.setOnAction(e -> {
             Counter counter = new Counter(box.getValue());
+            Database database = new Database();
             if(box.getValue() != null) {
-                new GUI2(counter);
+                new GUI2(counter, database);
                 stage1.close();
             } else {
                 errorLabel.setVisible(true);

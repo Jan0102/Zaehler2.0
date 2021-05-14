@@ -6,6 +6,10 @@
     -fx-text-fill: #FFFFFF;
 }
 
+.label-big{
+    -fx-font-size: 20;
+}
+
 .button {
     -fx-background-color: #b7bec3;
 }
@@ -37,10 +41,26 @@
     -fx-background-color: #87a7ca;
 }
 
-.spinner .increment-arrow-button {
-    -fx-background-color: transparent;
+.background1 {
+    -fx-background-color: #f26b5b ;
 }
 
-.spinner .increment-arrow-button .increment-arrow {
-    -fx-background-color: transparent
+.background2 {
+    -fx-background-color: #b00b69 ;
 }
+
+.list-view {
+    -fx-background-color: #FFF;
+}
+
+.list-cell {
+    -fx-background-color: #383838;
+    -fx-text-fill: #FFFFFF;
+}
+
+.list-cell:selected {
+    -fx-background-color: #6b617a  ;
+}
+
+
+

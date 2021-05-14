@@ -12,7 +12,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
-        new GUI1();
+        Database database = new Database();
+        new GUI1(database);
     }
 }
