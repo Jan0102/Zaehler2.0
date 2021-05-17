@@ -1,12 +1,17 @@
 package ZahlerFX;
 
 import javafx.application.Application;
+import javafx.beans.binding.Bindings;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.*;
 import javafx.scene.control.*;
+import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+
+import java.util.Objects;
 
 
 public class GUI2 {
@@ -70,6 +75,9 @@ public class GUI2 {
     private void makeAddButton() {
         addButton = new Button("+ Add");
         addButton.setPrefSize(70,40);
+        addButton.setOnAction(e -> {
+            leftL.getItems().add(CountingObject.BIRD);
+        });
     }
 
 
@@ -164,15 +172,40 @@ public class GUI2 {
         topL.setPrefHeight(80);
         topL.getChildren().addAll(backButton, addButton);
         //topL.getStyleClass().add("background2");
-
     }
 
 
 
     private void makeLeft() {
+        //creates listview
         leftL = new ListView<>();
         leftL.setPrefWidth(250);
         leftL.getItems().addAll(CountingObject.BIRD, CountingObject.LANGESWORT12);
+        //creates cell factory for listview
+        leftL.setCellFactory(lv -> {
+            ListCell<CountingObject> cell = new ListCell<>();
+
+            ContextMenu context = new ContextMenu();
+
+            //adds item with name "delete" and sets function to delete the selected item
+            MenuItem deleteItem = new MenuItem();
+            deleteItem.textProperty().bind(Bindings.format("Delete", cell.itemProperty()));
+            deleteItem.setOnAction(event -> leftL.getItems().remove(cell.getItem()));
+            context.getItems().add(deleteItem);
+
+            cell.textProperty().bind(Bindings.createStringBinding(
+                    () -> Objects.toString(cell.getItem(), ""),
+                    cell.itemProperty()));
+
+            cell.emptyProperty().addListener((obs, wasEmpty, isNowEmpty) -> {
+                if (isNowEmpty) {
+                    cell.setContextMenu(null);
+                } else {
+                    cell.setContextMenu(context);
+                }
+            });
+            return cell ;
+        });
     }
 
 

@@ -3,7 +3,7 @@
 }
 
 .label {
-    -fx-text-fill: #FFFFFF;
+    -fx-text-fill: white;
 }
 
 .label-big{
@@ -50,17 +50,33 @@
 }
 
 .list-view {
-    -fx-background-color: #FFF;
+    -fx-background-color: white;
 }
 
 .list-cell {
     -fx-background-color: #383838;
-    -fx-text-fill: #FFFFFF;
+    -fx-text-fill: white;
 }
 
 .list-cell:selected {
     -fx-background-color: #6b617a  ;
 }
 
+.context-menu {
+    -fx-background-color: #383838;
+    -fx-text-fill: white;
+}
 
+.menu-item .label {
+    -fx-text-fill: white;
+}
 
+.menu-item:focused {
+    -fx-background: -fx-accent;
+    -fx-background-color: #87a7ca;
+    -fx-text-fill: -fx-selection-bar-text;
+}
+
+.menu-item:focused .label {
+    -fx-text-fill: white;
+}
