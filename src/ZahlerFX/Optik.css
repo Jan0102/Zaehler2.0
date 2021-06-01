@@ -50,7 +50,8 @@
 }
 
 .list-view {
-    -fx-background-color: white;
+    -fx-background-color: #383838;
+    -fx-border-color: #383838;
 }
 
 .list-cell {

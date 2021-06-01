@@ -40,7 +40,7 @@ public class GUI2 {
         stageTitle();
         makeBackButton(database);
         makeResetButton(counter);
-        makeAddButton();
+        makeAddButton(database);
         makePlusButton(counter);
         makeMinusButton(counter);
         makeNameLabel(counter);
@@ -48,7 +48,7 @@ public class GUI2 {
         makeStepCount(counter);
         makeCenter();
         makeTop();
-        makeLeft();
+        makeLeft(counter);
         makeRight();
         makeBorderpane();
         setScene();
@@ -72,12 +72,10 @@ public class GUI2 {
         });
     }
 
-    private void makeAddButton() {
+    private void makeAddButton(Database database) {
         addButton = new Button("+ Add");
         addButton.setPrefSize(70,40);
-        addButton.setOnAction(e -> {
-            leftL.getItems().add(CountingObject.BIRD);
-        });
+        addButton.setOnAction(e -> new GUI1(database));
     }
 
 
@@ -176,7 +174,7 @@ public class GUI2 {
 
 
 
-    private void makeLeft() {
+    private void makeLeft(Counter counter) {
         //creates listview
         leftL = new ListView<>();
         leftL.setPrefWidth(250);
@@ -198,10 +196,16 @@ public class GUI2 {
                     cell.itemProperty()));
 
             cell.emptyProperty().addListener((obs, wasEmpty, isNowEmpty) -> {
-                if (isNowEmpty) {
-                    cell.setContextMenu(null);
-                } else {
+                if (!isNowEmpty) {
                     cell.setContextMenu(context);
+                }
+            });
+
+            //Change name and counter to the values in the database (if possible)
+            cell.setOnMouseClicked(e -> {
+                if(!cell.isEmpty()) {
+                    name.setText("Hallo");
+                    zahl.setText("100");
                 }
             });
             return cell ;

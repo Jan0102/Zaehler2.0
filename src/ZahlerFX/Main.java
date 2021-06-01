@@ -11,8 +11,11 @@ public class Main extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage)  {
         Database database = new Database();
-        new GUI1(database);
+        Counter counter = new Counter(CountingObject.CAR);
+        new GUI2(counter, database);
+        new DBConnection();
+
     }
 }
