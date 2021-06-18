@@ -13,6 +13,12 @@ import javafx.stage.Stage;
 
 import java.util.Objects;
 
+/**
+ * Die Klasse GUI2 ist das Hauptfenster welches den Zähler und damit zusammenhängende Elemente enthält.
+ *
+ * @author Noel Huibers, Jan Reuter, Boris Hyacinte Kemadjou Djeunou
+ * @version 0.1.1
+ */
 
 public class GUI2 {
 
@@ -35,7 +41,11 @@ public class GUI2 {
     private Label zahl;
 
 
-
+    /**
+     * Diese ist der Konstruktor der Klasse GUI2. Diese Funktion wird beim erstellen des Objekts ausgeführt und initialisiert die einzelnen Methoden.
+     * @param counter;
+     * @param database;
+     */
     public GUI2(Counter counter, Database database){
         stageTitle();
         makeBackButton(database);
@@ -55,14 +65,19 @@ public class GUI2 {
     }
 
 
-
+    /**
+     * Diese Funktion erstellt die stage und gibt der stage einen Namen.
+     */
     private void stageTitle() {
         stage2 = new Stage();
         stage2.setTitle("Second Window");
     }
 
 
-
+    /**
+     * Diese Funktion erstellt einen Button mit dem man eine neue Instanz von GUI1 aufruft und die GUI2 Instanz schließt.
+     * @param database;
+     */
     private void makeBackButton(Database database) {
         backButton = new Button("Back");
         backButton.setPrefSize(70,40);
@@ -72,6 +87,11 @@ public class GUI2 {
         });
     }
 
+
+    /**
+     * Diese Funktion erstellt einen Button der eine neue Instanz von GUI1 aufruft um ein neues Objekt zu erstellen.
+     * @param database;
+     */
     private void makeAddButton(Database database) {
         addButton = new Button("+ Add");
         addButton.setPrefSize(70,40);
@@ -79,7 +99,10 @@ public class GUI2 {
     }
 
 
-
+    /**
+     * Diese Funktion erstellt einen Button mit dem man den Zähler auf 0 setzten kann.
+     * @param counter;
+     */
     private void makeResetButton(Counter counter) {
         resetButton = new Button("Reset");
         resetButton.setPrefWidth(100);
@@ -91,7 +114,10 @@ public class GUI2 {
     }
 
 
-
+    /**
+     * Diese Funktion erstellt einen Button mit dem man den Zähler erhöht.
+     * @param counter;
+     */
     private void makePlusButton(Counter counter) {
         plus = new Button("+\n");
         plus.setPrefWidth(50);
@@ -105,7 +131,10 @@ public class GUI2 {
     }
 
 
-
+    /**
+     * Diese Funktion erstellt einen Button mit dem man den Zähler vermindert.
+     * @param counter;
+     */
     private void makeMinusButton(Counter counter) {
         minus = new Button("-\n");
         minus.setPrefWidth(50);
@@ -119,7 +148,10 @@ public class GUI2 {
     }
 
 
-
+    /**
+     * Diese Funktion erstellt ein Label, welches den derzeitigen Objektnamen anzeigt.
+     * @param counter;
+     */
     private void makeNameLabel(Counter counter) {
         name = new Label(counter.name + " :");
         name.setPrefWidth(200);
@@ -130,7 +162,10 @@ public class GUI2 {
     }
 
 
-
+    /**
+     * Diese Funktion erstellt ein Label, welches den derzeitigen Wert des Zählers anzeigt.
+     * @param counter;
+     */
     private void makeCounterLabel(Counter counter) {
         zahl = new Label(String.valueOf(counter.number));
         zahl.setPrefWidth(200);
@@ -141,7 +176,10 @@ public class GUI2 {
     }
 
 
-
+    /**
+     * Diese Funktion erstellt einen Spinner mit dem man die Schrittzahl anpassen kann.
+     * @param counter;
+     */
     private void makeStepCount(Counter counter) {
         step = new Spinner<>(1,1000000,counter.stepCount);
         step.setPrefWidth(100);
@@ -151,7 +189,9 @@ public class GUI2 {
     }
 
 
-
+    /**
+     * Diese Funktion fügt die Elemente Plusbutton, Minusbutton, Namelabel und Counterlabel der Center Area des Borderpanes hinzu.
+     */
     private void makeCenter() {
         centerL = new GridPane();
         centerL.setPadding(new Insets(10,10,10,10));
@@ -162,18 +202,23 @@ public class GUI2 {
     }
 
 
-
+    /**
+     * Diese Funktion fügt die Elemente Backbutton und Addbutton der Top Area des Borderpanes hinzu.
+     */
     private void makeTop() {
         topL = new FlowPane();
         topL.setHgap(25);
         topL.setPadding(new Insets(20,10,10,20));
         topL.setPrefHeight(80);
         topL.getChildren().addAll(backButton, addButton);
-        //topL.getStyleClass().add("background2");
     }
 
 
-
+    /**
+     * Diese Funktion ertellt eine Listview in der Left Area des Borderpanes welches die einzelnen Objekte anzeigt.
+     * Bei einem Linksclick öffnet sich ein Menuitem mit dem man das jeweilige Objekt löschen kann.
+     * @param counter;
+     */
     private void makeLeft(Counter counter) {
         //creates listview
         leftL = new ListView<>();
@@ -213,18 +258,21 @@ public class GUI2 {
     }
 
 
-
+    /**
+     * Diese Funktion fügt die Elemente Stepcount und Resetbutton der Right Area des Borderpanes hinzu.
+     */
     private void makeRight() {
         rightL = new VBox();
         rightL.setPadding(new Insets(10,10,10,10));
         rightL.setSpacing(40);
         rightL.setPrefWidth(250);
         rightL.getChildren().addAll(step, resetButton);
-        //rightL.getStyleClass().add("background1");
     }
 
 
-
+    /**
+     * Diese Funktion erstellt das Borderpane Layout mit den verschiedenen Areas.
+     */
     private void makeBorderpane() {
         layout = new BorderPane();
         layout.setCenter(centerL);
@@ -235,7 +283,9 @@ public class GUI2 {
     }
 
 
-
+    /**
+     * Diese Funktion erstellt die Scene des Fensters.
+     */
     private void setScene() {
         Scene scene2 = new Scene(layout,1100,700);
         scene2.getStylesheets().add("ZahlerFX/Optik.css");

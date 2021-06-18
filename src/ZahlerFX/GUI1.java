@@ -9,6 +9,13 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+/**
+ * Die Klasse GUI1 ist das Fenster mit dem man ein neues Zahlungsobjekt erstellen kann.
+ *
+ * @author Noel Huibers, Jan Reuter, Boris Hyacinte Kemadjou Djeunou
+ * @version 0.1.1
+ */
+
 public class GUI1 {
 
 
@@ -23,7 +30,10 @@ public class GUI1 {
     private Label startLabel;
 
 
-
+    /**
+     * Diese ist der Konstruktor der Klasse GUI1. Diese Funktion wird beim erstellen des Objekts ausgeführt und initialisiert die einzelnen Methoden.
+     * @param database;
+     */
     public GUI1(Database database) {
         stageTitle();
         layout();
@@ -38,14 +48,18 @@ public class GUI1 {
     }
 
 
-
+    /**
+     * Diese Funktion erstellt die stage und gibt der stage einen Namen.
+     */
     private void stageTitle() {
         stage1 = new Stage();
         stage1.setTitle("First Window");
     }
 
 
-
+    /**
+     * Diese Funktion bestimmt das Layout der Scene, hier ein GridPane Layout.
+     */
     private void layout() {
         layout = new GridPane();
         layout.setPadding(new Insets(10,10,10,10));
@@ -54,7 +68,9 @@ public class GUI1 {
     }
 
 
-
+    /**
+     * Diese Funktion erstellt eine Combobox zum festlegen des Objekts.
+     */
     private void makeObjectBox() {
         box = new ComboBox<>();
         box.getItems().addAll(CountingObject.values());
@@ -62,14 +78,18 @@ public class GUI1 {
     }
 
 
-
+    /**
+     * Diese Funktion erstellt ein Label mit dem Inhalt "Choose an Object:".
+     */
     private void makeObjectLabel() {
         objectLabel = new Label("Choose an object:");
         GridPane.setConstraints(objectLabel,0,0);
     }
 
 
-
+    /**
+     * Diese Funktion erstellt ein Textfeld was standartmäßig auf 0 anfängt.
+     */
     //Doesnt work yet
     private void makeStartField() {
         Counter counter = new Counter(box.getValue());
@@ -78,7 +98,9 @@ public class GUI1 {
     }
 
 
-
+    /**
+     * Diese Funktion erstellt ein Label mit dem Inhalt "Choose a starting value:".
+     */
     private void makeStartLabel() {
         startLabel = new Label("Choose a starting value:");
         GridPane.setConstraints(startLabel,0,1);
@@ -86,7 +108,10 @@ public class GUI1 {
     }
 
 
-
+    /**
+     * Diese Funktion erstellt den Confirm Button, welcher eine neue Instanz von GUI2 erstellt. Sollte man kein Objekt ausgewählt haben
+     * erscheint stattdessen ein Errorlabel und es wird keine neue Instanz erstellt.
+     */
     private void makeButton() {
         button = new Button("Confirm");
         button.setOnAction(e -> {
@@ -103,7 +128,9 @@ public class GUI1 {
     }
 
 
-
+    /**
+     * Diese Funktion erstellt das Errorlabel welches erscheint sollte man kein Objekt ausgewählt haben und man den Confirm Button drückt.
+     */
     private void makeErrorLabel() {
         errorLabel = new Label("Choose an object!");
         errorLabel.setVisible(false);
@@ -113,14 +140,18 @@ public class GUI1 {
     }
 
 
-
+    /**
+     * Diese Funktion fügt alle Elemente dem Layout hinzu.
+     */
     private void setChildren() {
         layout.getChildren().addAll(box,objectLabel,startField,startLabel,button,errorLabel);
 
     }
 
 
-
+    /**
+     * Diese Funktion erstellt die Scene des Fensters.
+     */
     private void setScene() {
         Scene scene1 = new Scene(layout, 350, 300);
         scene1.getStylesheets().add("ZahlerFX/Optik.css");
